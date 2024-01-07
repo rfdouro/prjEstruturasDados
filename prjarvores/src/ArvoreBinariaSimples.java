@@ -37,27 +37,23 @@ public class ArvoreBinariaSimples<T extends Comparable> {
   return n;
  }
 
- public void percorre() {
-  percorre(raiz);
+ public void percorrePreOrdem() {
+  percorrePreOrdem(raiz);
+ }
+
+ public void percorrePosOrdem() {
+  percorrePosOrdem(raiz);
  }
 
  public void percorreOrdem() {
   percorreOrdem(raiz);
  }
 
- public boolean existe(T pesquisa) {
-  return existe(pesquisa, raiz);
- }
-
- private void percorre(NoArvore<T> atual) {
+ private void percorrePreOrdem(NoArvore<T> atual) {
   if (atual != null) {
    System.out.print(atual.valor + ", ");
-   if (atual.esquerdo != null) {
-    percorre(atual.esquerdo);
-   }
-   if (atual.direito != null) {
-    percorre(atual.direito);
-   }
+   percorrePreOrdem(atual.esquerdo);
+   percorrePreOrdem(atual.direito);
   }
  }
 
@@ -67,6 +63,18 @@ public class ArvoreBinariaSimples<T extends Comparable> {
    System.out.print(atual.valor + ", ");
    percorreOrdem(atual.direito);
   }
+ }
+
+ private void percorrePosOrdem(NoArvore<T> atual) {
+  if (atual != null) {
+   percorrePosOrdem(atual.esquerdo);
+   percorrePosOrdem(atual.direito);
+   System.out.print(atual.valor + ", ");
+  }
+ }
+
+ public boolean existe(T pesquisa) {
+  return existe(pesquisa, raiz);
  }
 
  private boolean existe(T pesquisa, NoArvore<T> atual) {
@@ -115,7 +123,8 @@ public class ArvoreBinariaSimples<T extends Comparable> {
     if (atual.direito != null && atual.esquerdo != null) {
      // faz procedimento do maximo
      /*
-      * um nó de maior valor ou tem filho à equerda ou é folha (não tem filhos) -> isso garante o sucesso
+      * um nó de maior valor ou tem filho à equerda ou é folha (não tem filhos) ->
+      * isso garante o sucesso
       */
      NoArvore<T> max = maximo(atual.esquerdo);
      atual.valor = max.valor;

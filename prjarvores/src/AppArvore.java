@@ -3,10 +3,13 @@ public class AppArvore {
   ArvoreBinariaSimples<Integer> a = new ArvoreBinariaSimples<>();
   a.adiciona(5);
   a.adiciona(2);
+  a.adiciona(7);
   a.adiciona(6);
-  a.percorre();
+  a.adiciona(8);
+  a.adiciona(1);
+  a.percorreOrdem();
   System.out.println();
   a.remove(5);
-  a.percorre();
+  a.percorrePreOrdem();
  }
 }
