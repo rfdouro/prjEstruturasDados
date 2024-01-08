@@ -15,8 +15,8 @@ public class NoArvore<T> {
  }
 
  public String toString() {
-  return "[" + (pai != null ? pai.valor : "null") + "] " + valor + " ([" + (esquerdo != null ? esquerdo.valor : "null")
-    + "],[" + (direito != null ? direito.valor : "null") + "])";
+  return "[" + (pai != null ? pai.valor : " ") + "] " + this.valor + " ([" + (esquerdo != null ? esquerdo.valor : " ")
+    + "],[" + (direito != null ? direito.valor : " ") + "])";
  }
 
 }
