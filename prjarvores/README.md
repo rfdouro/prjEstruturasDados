@@ -1,18 +1,7 @@
-## Getting Started
+## Projeto de estruturas de árvores
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Esse projeto tem por base o estudo de implementações das estruturas de dados baseadas em árvores
 
-## Folder Structure
+> Base de conhecimento
 
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+O conteúdo aqui elaborado é `baseado` no livro de João Araujo. Mais detalhes podem ser obtidos [aqui](http://www.araujo.eng.uerj.br/opendata/ods-ptbr-java.pdf).
