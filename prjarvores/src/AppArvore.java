@@ -1,25 +1,9 @@
 public class AppArvore {
  public static void main(String[] args) {
-  ArvoreBinariaSimples<Integer> a = new ArvoreBinariaSimples<>();
-  a.adiciona(2);
-  a.adiciona(0);
-  a.adiciona(1);
-  a.adiciona(3);
-  a.adiciona(8);
-  a.adiciona(4);
-  a.adiciona(5);
+  ArvoreBinariaSimples<Integer> a = new ArvoreBinariaSimples<>(5, 3, 2, 4, 6);
   a.percorrePreOrdem();
   System.out.println();
-  a.remove(2);
-  a.percorrePreOrdem();
-  System.out.println();
-  a.remove(8);
-  a.percorrePreOrdem();
-  System.out.println();
-  a.remove(5);
-  a.percorrePreOrdem();
-  System.out.println();
-  a.remove(4);
+  a.remove(6);
   a.percorrePreOrdem();
   System.out.println();
   a.remove(3);
