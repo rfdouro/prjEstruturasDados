@@ -115,7 +115,15 @@ public class ArvoreBinariaSimples<T extends Comparable> {
   } else if (no.direito != null && no.esquerdo != null) {
    NoArvore<T> max = maximo(no.esquerdo);
    no.valor = max.valor;
-   no.esquerdo = max.esquerdo;//problema
+   if (no == max.pai) {
+    no.esquerdo = max.esquerdo;
+    if (no.esquerdo != null)
+     no.esquerdo.pai = no;
+   } else {
+    max.pai.direito = max.esquerdo;
+    if (max.esquerdo != null)
+     max.esquerdo.pai = max.pai;
+   }
   } else if (no.direito == null && no.esquerdo == null) {
    // é folha -> encontra pelo endereço de memória
    if (pai == null) {

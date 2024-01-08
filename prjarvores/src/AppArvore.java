@@ -16,10 +16,10 @@ public class AppArvore {
   a.remove(8);
   a.percorrePreOrdem();
   System.out.println();
-  a.remove(4);
+  a.remove(5);
   a.percorrePreOrdem();
   System.out.println();
-  a.remove(5);
+  a.remove(4);
   a.percorrePreOrdem();
   System.out.println();
   a.remove(3);
