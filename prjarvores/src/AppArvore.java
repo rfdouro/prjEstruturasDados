@@ -3,7 +3,7 @@ public class AppArvore {
   ArvoreBinariaSimples<Integer> a = new ArvoreBinariaSimples<>(5, 3, 2, 4, 6);
   a.percorrePreOrdem();
   System.out.println();
-  a.remove(6);
+  a.remove(5);
   a.percorrePreOrdem();
   System.out.println();
   a.remove(3);
