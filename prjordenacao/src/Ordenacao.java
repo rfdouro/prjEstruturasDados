@@ -27,6 +27,53 @@ public class Ordenacao {
   }
  }
 
+ public void quicksort(int[] vetor) {
+  quicksort(vetor, 0, vetor.length);
+ }
+
+ int passo = 0;
+
+ private void quicksort(int[] vetor, int ini, int fim) {
+  int i = ini;
+  int j = fim - 1;
+  int pivo = vetor[(ini + fim) / 2];
+  System.out.println("executa entre vetor[" + i + "] = " + vetor[i] + " e vetor[" + j + "] = " + vetor[j]);
+  System.out.println("pivô escolhido na posição " + ((ini + fim) / 2) + " = vetor[" + ((ini + fim) / 2) + "] = "
+    + vetor[((ini + fim) / 2)]);
+  while (i < j) {
+   while (vetor[i] < pivo) {
+    i++;
+   }
+   while (vetor[j] > pivo) {
+    j--;
+   }
+   if (i < j) {
+
+    System.out.println("troca vetor[" + i + "] = " + vetor[i] + " por vetor[" + j + "] = " + vetor[j]);
+
+    int aux = vetor[i];
+    vetor[i] = vetor[j];
+    vetor[j] = aux;
+    i++;
+    j--;
+   }
+   if (ini < j) {
+    for (int x : vetor) {
+     System.out.print(x + ", ");
+    }
+    System.out.println();
+    quicksort(vetor, ini, j);
+   }
+   if (i < fim) {
+    for (int x : vetor) {
+     System.out.print(x + ", ");
+    }
+    System.out.println();
+    quicksort(vetor, i, fim);
+   }
+  }
+ }
+
  /*
   * pesquisa em => https://joaoarthurbm.github.io/eda/posts/quick-sort/
   */
@@ -47,16 +94,16 @@ public class Ordenacao {
   return i;
  }
 
- private void quicksort(int[] vetor, int esq, int dir) {
+ private void quicksortl(int[] vetor, int esq, int dir) {
   if (esq < dir) {
    int indicePivo = particiona(vetor, esq, dir);
-   quicksort(vetor, esq, indicePivo);
-   quicksort(vetor, indicePivo + 1, dir);
+   quicksortl(vetor, esq, indicePivo);
+   quicksortl(vetor, indicePivo + 1, dir);
   }
  }
 
- public void quicksort(int[] vetor) {
-  quicksort(vetor, 0, vetor.length);
+ public void quicksortl(int[] vetor) {
+  quicksortl(vetor, 0, vetor.length);
  }
 
  private void mescla(int[] vetor, int ini, int centro, int fim) {
