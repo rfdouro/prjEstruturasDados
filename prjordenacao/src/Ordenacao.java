@@ -27,19 +27,41 @@ public class Ordenacao {
   }
  }
 
+ public void insertionsortinicio(int[] vetor) {
+  for (int i = 1; i < vetor.length; i++) {
+   int x = vetor[i];
+   int j = i - 1;
+   while (j >= 0 && vetor[j] > x) {
+    vetor[j + 1] = vetor[j];
+    j--;
+   }
+   vetor[j + 1] = x;
+  }
+ }
+
+ public void insertionsortfim(int[] vetor) {
+  for (int i = vetor.length - 2; i >= 0; i--) {
+   int x = vetor[i];
+   int j = i + 1;
+   while (j < vetor.length && vetor[j] < x) {
+    vetor[j - 1] = vetor[j];
+    j++;
+   }
+   vetor[j - 1] = x;
+  }
+ }
+
  public void quicksort(int[] vetor) {
   quicksort(vetor, 0, vetor.length);
  }
 
- int passo = 0;
-
  private void quicksort(int[] vetor, int ini, int fim) {
   int i = ini;
   int j = fim - 1;
+  if (i >= j) {
+   return;
+  }
   int pivo = vetor[(ini + fim) / 2];
-  System.out.println("executa entre vetor[" + i + "] = " + vetor[i] + " e vetor[" + j + "] = " + vetor[j]);
-  System.out.println("pivô escolhido na posição " + ((ini + fim) / 2) + " = vetor[" + ((ini + fim) / 2) + "] = "
-    + vetor[((ini + fim) / 2)]);
   while (i < j) {
    while (vetor[i] < pivo) {
     i++;
@@ -48,9 +70,6 @@ public class Ordenacao {
     j--;
    }
    if (i < j) {
-
-    System.out.println("troca vetor[" + i + "] = " + vetor[i] + " por vetor[" + j + "] = " + vetor[j]);
-
     int aux = vetor[i];
     vetor[i] = vetor[j];
     vetor[j] = aux;
@@ -58,17 +77,9 @@ public class Ordenacao {
     j--;
    }
    if (ini < j) {
-    for (int x : vetor) {
-     System.out.print(x + ", ");
-    }
-    System.out.println();
     quicksort(vetor, ini, j);
    }
    if (i < fim) {
-    for (int x : vetor) {
-     System.out.print(x + ", ");
-    }
-    System.out.println();
     quicksort(vetor, i, fim);
    }
   }

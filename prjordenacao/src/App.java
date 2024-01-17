@@ -8,7 +8,7 @@ public class App {
    System.out.print(x + ", ");
   }
   System.out.println();
-  new Ordenacao().quicksort(v1);
+  new Ordenacao().mergesort(v1);
   for (int x : v1) {
    System.out.print(x + ", ");
   }
