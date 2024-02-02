@@ -1,8 +1,8 @@
 public class NoArvore<T> {
-  T valor;
-  NoArvore<T> esquerdo;
-  NoArvore<T> direito;
-  NoArvore<T> pai;
+  public T valor;
+  public NoArvore<T> esquerdo;
+  public NoArvore<T> direito;
+  public NoArvore<T> pai;
 
   public NoArvore() {
   }

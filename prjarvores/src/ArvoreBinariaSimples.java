@@ -1,8 +1,8 @@
 @SuppressWarnings("unchecked")
-public class ArvoreBinariaSimples<T extends Comparable> {
+public class ArvoreBinariaSimples<T extends Comparable<T>> {
 
-  int n = 0;
-  NoArvore<T> raiz;
+  public int n = 0;
+  public NoArvore<T> raiz;
 
   public ArvoreBinariaSimples() {
 

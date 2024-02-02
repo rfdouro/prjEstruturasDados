@@ -51,7 +51,21 @@ public class Ordenacao {
   }
  }
 
+ private void insertionsortr(int[] vetor, int ini, int fim) {
+  if (ini >= 0 && ini <= fim - 1) {
+   int valor = vetor[ini];
+   if (vetor[ini + 1] < valor) {
+    vetor[ini] = vetor[ini + 1];
+    vetor[ini + 1] = valor;
+    insertionsortr(vetor, ini + 1, fim);
+   }
+   insertionsortr(vetor, ini - 1, fim);
+  }
+ }
 
+ public void insertionsortr(int[] vetor) {
+  insertionsortr(vetor, vetor.length - 2, vetor.length - 1);
+ }
 
  public void quicksort(int[] vetor) {
   quicksort(vetor, 0, vetor.length);
