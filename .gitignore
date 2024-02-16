@@ -37,3 +37,4 @@ build/
 ### arquivo de deploy ###
 *.bat
 deploy.sh
+*.class
