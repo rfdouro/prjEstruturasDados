@@ -1,13 +1,12 @@
 public class App {
  public static void main(String[] args) throws Exception {
-  Lista<Integer> l1 = new ListaDuplaEncadeada<>();
-  l1.adiciona(1, 0);
-  l1.adiciona(2, 0);
-  l1.adiciona(3, 0);
-  l1.adiciona(4, 0);
+  Lista<String> l1 = new ListaArray<>();
+  l1.adiciona("a", 0);
+  l1.adiciona("l", 0);
+  l1.adiciona("u", 0);
+  l1.adiciona("a", 0);
 
-
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i < l1.tamanho(); i++) {
    System.out.print(l1.seleciona(i));
   }
   System.out.println();

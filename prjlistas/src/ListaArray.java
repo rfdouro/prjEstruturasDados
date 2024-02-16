@@ -44,6 +44,11 @@ public class ListaArray<T> implements Lista<T> {
  }
 
  @Override
+ public void adiciona(T elemento) {
+  adiciona(elemento, 0);
+ }
+
+ @Override
  public void remove(int indice) {
   // desloca elementos à esquerda
   if (elementos[indice] != null) {
@@ -61,5 +66,20 @@ public class ListaArray<T> implements Lista<T> {
    }
    elementos = novoselementos;
   }
+ }
+
+ @Override
+ public void remove() {
+  remove(0);
+ }
+
+ @Override
+ public int pesquisa(T elemento) {
+  for (int i = 0; i < elementos.length && i < n; i++) {
+   if (elementos[i].equals(elemento)) {
+    return i;
+   }
+  }
+  return -1;
  }
 }

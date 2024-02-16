@@ -2,6 +2,7 @@
 public class ListaEncadeada<T> implements Lista<T> {
  int n = 0;
  No<T> inicio = null;
+ No<T> fim = null;
 
  @Override
  public int tamanho() {
@@ -51,8 +52,21 @@ public class ListaEncadeada<T> implements Lista<T> {
  @Override
  public void adiciona(Object elemento, int indice) {
   if (indice == 0) {
-   No<T> novo = new No<T>((T) elemento, inicio, null);
-   inicio = novo;
+   if (inicio == null) {
+    No<T> novo = new No<T>((T) elemento, inicio, null);
+    inicio = novo;
+    fim = novo;
+    n++;
+    return;
+   } else {
+    No<T> novo = new No<T>((T) elemento, inicio, null);
+    inicio = novo;
+    n++;
+   }
+  } else if (indice == (n - 1)) {
+   No<T> novo = new No<T>((T) elemento, null, null);
+   fim.proximono = novo;
+   fim = novo;
    n++;
    return;
   } else {
@@ -72,6 +86,11 @@ public class ListaEncadeada<T> implements Lista<T> {
     contador++;
    }
   }
+ }
+
+ @Override
+ public void adiciona(T elemento) {
+  adiciona(elemento, 0);
  }
 
  @Override
@@ -100,6 +119,25 @@ public class ListaEncadeada<T> implements Lista<T> {
     contador++;
    }
   }
+ }
+
+ @Override
+ public void remove() {
+  remove(0);
+ }
+
+ @Override
+ public int pesquisa(T elemento) {
+  No<T> noatual = inicio;
+  int contador = 0;
+  while (noatual != null) {
+   if (noatual.valor.equals(elemento)) {
+    return contador;
+   }
+   noatual = noatual.proximono;
+   contador++;
+  }
+  return -1;
  }
 
 }

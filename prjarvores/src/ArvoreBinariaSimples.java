@@ -2,7 +2,7 @@
 public class ArvoreBinariaSimples<T extends Comparable<T>> {
 
   public int n = 0;
-  public NoArvore<T> raiz;
+  public NoArvoreBinariaSimples<T> raiz;
 
   public ArvoreBinariaSimples() {
 
@@ -16,26 +16,26 @@ public class ArvoreBinariaSimples<T extends Comparable<T>> {
 
   public void adiciona(T valor) {
     if (raiz == null) {
-      raiz = new NoArvore<>(valor, null, null, null);
+      raiz = new NoArvoreBinariaSimples<>(valor, null, null, null);
       n++;
       return;
     }
     adiciona(valor, raiz);
   }
 
-  private void adiciona(T valor, NoArvore<T> atual) {
+  private void adiciona(T valor, NoArvoreBinariaSimples<T> atual) {
     if (atual != null) {
       if (atual.valor.compareTo(valor) >= 0) {
         if (atual.esquerdo == null) {
           n++;
-          atual.esquerdo = new NoArvore<>(valor, null, null, atual);
+          atual.esquerdo = new NoArvoreBinariaSimples<>(valor, null, null, atual);
         } else {
           adiciona(valor, atual.esquerdo);
         }
       } else {
         if (atual.direito == null) {
           n++;
-          atual.direito = new NoArvore<>(valor, null, null, atual);
+          atual.direito = new NoArvoreBinariaSimples<>(valor, null, null, atual);
         } else {
           adiciona(valor, atual.direito);
         }
@@ -59,7 +59,7 @@ public class ArvoreBinariaSimples<T extends Comparable<T>> {
     percorreOrdem(raiz);
   }
 
-  private void percorrePreOrdem(NoArvore<T> atual) {
+  private void percorrePreOrdem(NoArvoreBinariaSimples<T> atual) {
     if (atual != null) {
       System.out.print(atual + ", ");
       percorrePreOrdem(atual.esquerdo);
@@ -67,7 +67,7 @@ public class ArvoreBinariaSimples<T extends Comparable<T>> {
     }
   }
 
-  private void percorreOrdem(NoArvore<T> atual) {
+  private void percorreOrdem(NoArvoreBinariaSimples<T> atual) {
     if (atual != null) {
       percorreOrdem(atual.esquerdo);
       System.out.print(atual.valor + ", ");
@@ -75,7 +75,7 @@ public class ArvoreBinariaSimples<T extends Comparable<T>> {
     }
   }
 
-  private void percorrePosOrdem(NoArvore<T> atual) {
+  private void percorrePosOrdem(NoArvoreBinariaSimples<T> atual) {
     if (atual != null) {
       percorrePosOrdem(atual.esquerdo);
       percorrePosOrdem(atual.direito);
@@ -87,7 +87,7 @@ public class ArvoreBinariaSimples<T extends Comparable<T>> {
     return existe(pesquisa, raiz);
   }
 
-  private boolean existe(T pesquisa, NoArvore<T> atual) {
+  private boolean existe(T pesquisa, NoArvoreBinariaSimples<T> atual) {
     if (atual != null) {
       if (atual.valor.equals(pesquisa)) {
         return true;
@@ -101,7 +101,7 @@ public class ArvoreBinariaSimples<T extends Comparable<T>> {
     return false;
   }
 
-  private NoArvore<T> pesquisa(T pesquisa, NoArvore<T> atual) {
+  private NoArvoreBinariaSimples<T> pesquisa(T pesquisa, NoArvoreBinariaSimples<T> atual) {
     if (atual != null) {
       if (atual.valor.equals(pesquisa)) {
         return atual;
@@ -117,13 +117,13 @@ public class ArvoreBinariaSimples<T extends Comparable<T>> {
 
   public boolean remove(T elemento) {
     // return remove(elemento, raiz);
-    NoArvore<T> no = pesquisa(elemento, raiz);
-    NoArvore<T> pai = (no != null) ? no.pai : null;
+    NoArvoreBinariaSimples<T> no = pesquisa(elemento, raiz);
+    NoArvoreBinariaSimples<T> pai = (no != null) ? no.pai : null;
 
     if (no == null) {
       return false;
     } else if (no.direito != null && no.esquerdo != null) {
-      NoArvore<T> max = maximo(no.esquerdo);
+      NoArvoreBinariaSimples<T> max = maximo(no.esquerdo);
       no.valor = max.valor;
       if (no == max.pai) {
         no.esquerdo = max.esquerdo;
@@ -146,8 +146,8 @@ public class ArvoreBinariaSimples<T extends Comparable<T>> {
     } else if (no.direito != null) {
       // tem um filho -> elimina pelo pai à direita
       no.valor = no.direito.valor;
-      NoArvore<T> esq = no.direito.esquerdo;
-      NoArvore<T> dir = no.direito.direito;
+      NoArvoreBinariaSimples<T> esq = no.direito.esquerdo;
+      NoArvoreBinariaSimples<T> dir = no.direito.direito;
       no.esquerdo = esq;
       if (esq != null)
         esq.pai = no;
@@ -157,8 +157,8 @@ public class ArvoreBinariaSimples<T extends Comparable<T>> {
     } else if (no.esquerdo != null) {
       // tem um filho -> elimina pelo pai à esquerda
       no.valor = no.esquerdo.valor;
-      NoArvore<T> esq = no.esquerdo.esquerdo;
-      NoArvore<T> dir = no.esquerdo.direito;
+      NoArvoreBinariaSimples<T> esq = no.esquerdo.esquerdo;
+      NoArvoreBinariaSimples<T> dir = no.esquerdo.direito;
       no.esquerdo = esq;
       if (esq != null)
         esq.pai = no;
@@ -170,7 +170,7 @@ public class ArvoreBinariaSimples<T extends Comparable<T>> {
     return true;
   }
 
-  private NoArvore<T> maximo(NoArvore<T> atual) {
+  private NoArvoreBinariaSimples<T> maximo(NoArvoreBinariaSimples<T> atual) {
     if (atual.direito == null) {
       return atual;
     } else {
@@ -178,7 +178,7 @@ public class ArvoreBinariaSimples<T extends Comparable<T>> {
     }
   }
 
-  private boolean remove(T elemento, NoArvore<T> atual) {
+  private boolean remove(T elemento, NoArvoreBinariaSimples<T> atual) {
     if (atual != null) {
       if (atual.valor.compareTo(elemento) == 0) {
         if (atual.direito != null && atual.esquerdo != null) {
@@ -187,7 +187,7 @@ public class ArvoreBinariaSimples<T extends Comparable<T>> {
            * um nó de maior valor ou tem filho à equerda ou é folha (não tem filhos) ->
            * isso garante o sucesso
            */
-          NoArvore<T> max = maximo(atual.esquerdo);
+          NoArvoreBinariaSimples<T> max = maximo(atual.esquerdo);
           atual.valor = max.valor;
           atual.esquerdo = max.esquerdo;
         } else if (atual.direito == null && atual.esquerdo == null) {
@@ -203,8 +203,8 @@ public class ArvoreBinariaSimples<T extends Comparable<T>> {
         } else if (atual.direito != null) {
           // tem um filho -> elimina pelo pai à direita
           atual.valor = atual.direito.valor;
-          NoArvore<T> esq = atual.direito.esquerdo;
-          NoArvore<T> dir = atual.direito.direito;
+          NoArvoreBinariaSimples<T> esq = atual.direito.esquerdo;
+          NoArvoreBinariaSimples<T> dir = atual.direito.direito;
           atual.esquerdo = esq;
           if (esq != null)
             esq.pai = atual;
@@ -214,8 +214,8 @@ public class ArvoreBinariaSimples<T extends Comparable<T>> {
         } else {
           // tem um filho -> elimina pelo pai à esquerda
           atual.valor = atual.esquerdo.valor;
-          NoArvore<T> esq = atual.esquerdo.esquerdo;
-          NoArvore<T> dir = atual.esquerdo.direito;
+          NoArvoreBinariaSimples<T> esq = atual.esquerdo.esquerdo;
+          NoArvoreBinariaSimples<T> dir = atual.esquerdo.direito;
           atual.esquerdo = esq;
           if (esq != null)
             esq.pai = atual;
